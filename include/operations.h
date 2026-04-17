@@ -5,10 +5,10 @@
 
 void displayAllMembers(MembersList *membersList);
 void displayMember(MembersList *membersList, unsigned int id);
-void addMember();
-void updateMember();
-void removeMember();
-void saveData();
-void loadData();
+void addMember(MembersList *membersList, Member *member);
+// void updateMember();
+void removeMember(MembersList *membersList, unsigned int id);
+void saveData(MembersList *membersList);
+// void loadData();
 
 #endif // OPERATIONS_H
