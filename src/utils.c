@@ -57,12 +57,12 @@ Member *findMember(MembersList *membersList, unsigned short id) {
 
     Member *curr = membersList->head;
 
-    do {
+    while (curr != NULL) {
         if (curr->id == id) {
             return curr;
         }
         curr = curr->next;
-    } while (curr->next != NULL);
+    }
 
     return NULL;
 }
