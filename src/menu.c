@@ -45,11 +45,9 @@ void menu() {
         }
 
         case 3:
-            // TODO fix not reading chars
             system("cls");
             char name[50];
             printf("\nName: ");
-            fgets(name, sizeof(name), stdin);
 
             int age;
             printf("\nAge: ");
@@ -66,11 +64,11 @@ void menu() {
 
             double income;
             printf("\nIncome: ");
-            scanf_s("%f", &income);
+            scanf_s("%lf", &income);
 
             Member *member = malloc(sizeof(Member));
             member->id = ++id;
-            strcpy(member->name, name);
+            strcpy_s(member->name, sizeof(name), name);
             member->age = age;
             member->gender = gender;
             member->jobTitle = jobTitle;

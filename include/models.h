@@ -2,9 +2,9 @@
 #ifndef MODELS_H
 #define MODELS_H
 
-typedef enum { male = 0, female } gender;
+typedef enum { male = 1, female } gender;
 
-typedef enum { intern = 0, junior, mid, senior, manager, ceo } jobTitle;
+typedef enum { intern = 1, junior, mid, senior, manager, ceo } jobTitle;
 
 typedef struct Member {
     uint16_t id;
