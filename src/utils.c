@@ -1,5 +1,9 @@
 #include "utils.h"
 #include "models.h"
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 const char *genderToString(gender gender) {
     switch (gender) {
@@ -49,7 +53,7 @@ const char *jobTitleToString(jobTitle jobTitle) {
     }
 }
 
-Member *findMember(MembersList *membersList, unsigned short id) {
+Member *findMember(MembersList *membersList, unsigned id) {
     Member *head = membersList->head;
     if (head == NULL) {
         return NULL;
@@ -65,4 +69,44 @@ Member *findMember(MembersList *membersList, unsigned short id) {
     }
 
     return NULL;
+}
+
+Member *createMember() {
+
+    char name[50];
+    printf("\nName: ");
+    scanf("%49s", name);
+
+    int age;
+    printf("\nAge: ");
+    scanf_s("%d", &age);
+
+    gender gender;
+    printf("\n\nGender\n\nMale: 1\nFemale: 2\n\nOption: ");
+    scanf_s("%d", &gender);
+
+    jobTitle jobTitle;
+    printf("\n\nJob Title\n\nIntern: 1\nJunior: 2\nMid: 3\nSenior: "
+           "4\nManager: 5\nCEO: 6\n\nOption: ");
+    scanf_s("%d", &jobTitle);
+
+    double income;
+    printf("\nIncome: ");
+    scanf_s("%lf", &income);
+
+    Member *member = malloc(sizeof(Member));
+    if (member == NULL) {
+        perror("Memory allocation failed");
+        return NULL;
+    }
+
+    strcpy_s(member->name, sizeof(name), name);
+    member->age = age;
+    member->gender = gender;
+    member->jobTitle = jobTitle;
+    member->income = income;
+    member->next = NULL;
+    member->prev = NULL;
+
+    return member;
 }
