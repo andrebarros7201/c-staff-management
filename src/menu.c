@@ -54,12 +54,12 @@ void menu() {
             scanf_s("%d", &age);
 
             gender gender;
-            printf("\nGender\nMale: 0\nFemale: 1\nOption: ");
+            printf("\n\nGender\n\nMale: 1\nFemale: 2\nOption: ");
             scanf_s("%d", &gender);
 
             jobTitle jobTitle;
-            printf("\nJob Title\nIntern: 0\nJunior: 1\nMid: 2\nSenior: "
-                   "3\nManager: 4\nCEO: 5\nOption: ");
+            printf("\n\nJob Title\n\nIntern: 1\nJunior: 2\nMid: 3\nSenior: "
+                   "4\nManager: 5\nCEO: 6\n\nOption: ");
             scanf_s("%d", &jobTitle);
 
             double income;
