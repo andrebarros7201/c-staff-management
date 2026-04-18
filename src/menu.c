@@ -48,6 +48,7 @@ void menu() {
             system("cls");
             char name[50];
             printf("\nName: ");
+            scanf("%s", name);
 
             int age;
             printf("\nAge: ");
@@ -67,6 +68,7 @@ void menu() {
             scanf_s("%lf", &income);
 
             Member *member = malloc(sizeof(Member));
+
             member->id = ++id;
             strcpy_s(member->name, sizeof(name), name);
             member->age = age;

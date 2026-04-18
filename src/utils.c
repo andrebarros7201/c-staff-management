@@ -3,11 +3,11 @@
 
 const char *genderToString(gender gender) {
     switch (gender) {
-    case 0:
+    case 1:
         return "Male";
         break;
 
-    case 1:
+    case 2:
         return "Female";
         break;
 
@@ -19,27 +19,27 @@ const char *genderToString(gender gender) {
 
 const char *jobTitleToString(jobTitle jobTitle) {
     switch (jobTitle) {
-    case 0:
+    case 1:
         return "Intern";
         break;
 
-    case 1:
+    case 2:
         return "Junior";
         break;
 
-    case 2:
+    case 3:
         return "Mid";
         break;
 
-    case 3:
+    case 4:
         return "Senior";
         break;
 
-    case 4:
+    case 5:
         return "Manager";
         break;
 
-    case 5:
+    case 6:
         return "CEO";
         break;
 
