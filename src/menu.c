@@ -1,14 +1,16 @@
 #include "menu.h"
 #include "operations.h"
+#include "utils.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 void menu() {
+    system("cls");
     int option;
     int id = 0;
     MembersList membersList = {NULL, NULL, 0};
+    loadData(&membersList, &id);
 
     do {
         printf("\n\n\nMENU");
@@ -19,7 +21,6 @@ void menu() {
         printf("\n[4] Update Staff Member");
         printf("\n[5] Remove Staff Member");
         printf("\n[6] Save");
-        printf("\n[7] Load");
         printf("\nOption: ");
 
         scanf_s("%d", &option);
@@ -46,46 +47,23 @@ void menu() {
 
         case 3:
             system("cls");
-            char name[50];
-            printf("\nName: ");
-            scanf("%s", name);
-
-            int age;
-            printf("\nAge: ");
-            scanf_s("%d", &age);
-
-            gender gender;
-            printf("\n\nGender\n\nMale: 1\nFemale: 2\nOption: ");
-            scanf_s("%d", &gender);
-
-            jobTitle jobTitle;
-            printf("\n\nJob Title\n\nIntern: 1\nJunior: 2\nMid: 3\nSenior: "
-                   "4\nManager: 5\nCEO: 6\n\nOption: ");
-            scanf_s("%d", &jobTitle);
-
-            double income;
-            printf("\nIncome: ");
-            scanf_s("%lf", &income);
-
-            Member *member = malloc(sizeof(Member));
-
-            member->id = ++id;
-            strcpy_s(member->name, sizeof(name), name);
-            member->age = age;
-            member->gender = gender;
-            member->jobTitle = jobTitle;
-            member->income = income;
-            member->next = NULL;
-            member->prev = NULL;
-
-            addMember(&membersList, member);
+            Member *temp = createMember();
+            if (temp == NULL) {
+                printf("Failed to create member");
+                break;
+            }
+            temp->id = ++id;
+            addMember(&membersList, temp);
             break;
 
-        case 4:
+        case 4: {
+            int id;
+            printf("ID: ");
+            scanf_s("%d", &id);
             system("cls");
-            // TODO
-            // updateMember();
+            updateMember(&membersList, id);
             break;
+        }
 
         case 5: {
             system("cls");
@@ -98,13 +76,7 @@ void menu() {
 
         case 6:
             system("cls");
-            saveData(&membersList);
-            break;
-
-        case 7:
-            system("cls");
-            // TODO
-            // loadData();
+            saveData(&membersList, &id);
             break;
 
         default:
